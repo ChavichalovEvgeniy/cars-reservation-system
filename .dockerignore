@@ -1,0 +1,12 @@
+.gitignore
+.env
+
+node_modules
+dist
+
+Dockerfile
+
+docker-compose.yml
+
+.dockerignore
+

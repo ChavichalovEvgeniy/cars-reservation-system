@@ -1,0 +1,36 @@
+{
+  "name": "car-booking",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project ./",
+    "start:dev": "nodemon src/server.ts",
+    "migration:up": "yarn build && yarn sequelize-cli db:migrate",
+    "migration:down": "yarn sequelize-cli db:migrate:undo:all ",
+    "migration:rollback": "yarn sequelize-cli db:migrate:undo",
+    "migration:seed:up": "yarn sequelize-cli db:seed:all",
+    "migration:seed:down": "yarn sequelize-cli db:seed:undo:all"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/moment": "^2.13.0",
+    "@types/moment-range": "^4.0.0",
+    "@types/node": "^16.11.7",
+    "@types/pg": "^8.6.1",
+    "@types/uuid": "^8.3.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.5.0",
+    "moment": "^2.29.1",
+    "moment-range": "^4.0.2",
+    "pg": "^8.7.1",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}

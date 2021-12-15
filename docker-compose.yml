@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    depends_on:
+      - db
+    restart: unless-stopped
+    env_file: 
+      - .env
+    ports:
+      - "8000:8000"
+    command: sh -c "yarn migration:up --env production && yarn migration:seed:up --env production && yarn start:dev"
+    networks:
+      - cars-bookings-network
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: pg-db
+    env_file: 
+      - .env
+    ports:
+      - "5432:5432"
+    networks:
+      - cars-bookings-network
+networks:
+  cars-bookings-network:
+    driver: bridge
